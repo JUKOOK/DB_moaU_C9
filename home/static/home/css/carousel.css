@@ -1,0 +1,127 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-top: 10vh;
+  padding-bottom: 3rem;
+  color: #39332E;
+  background-color: rgba(227, 251, 255, 0.4);
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+  bottom: 3rem;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+  background-color: #777;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
+
+.red {
+  color:#FF384E;
+}
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media screen and (max-width: 760px) {
+  .carousel-caption {
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+  
+  .hidden-xs {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  h1 {
+    font-size : 30px;
+  }
+  
+  h3 {
+    font-size : 25px;
+  }
+  
+}
+
+
+@media screen and (min-width: 760px) {
+  /* Bump up size of carousel content */
+  .carousel-caption {
+    margin-bottom: 1.5rem;
+    line-height: 2;
+  }
+  .carousel-caption p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media screen and (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+/* Carousel image filterring : opacity */
+
+.carousel-item > img {
+  -webkit-filter: brightness(.45);
+}
