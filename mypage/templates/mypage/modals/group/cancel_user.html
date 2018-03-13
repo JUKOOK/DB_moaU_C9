@@ -1,0 +1,52 @@
+<!-- 모달 : cancel_user.html, 마이페이지 공동구매에서 유저가 신청한 party 취소용 -->
+<form method="POST" action="{% url 'mypage:cancel_user_Group' %}">
+    {% csrf_token %}
+    <div class="modal fade" id="cancel_user_group">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-4 col-form-label">Title</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" placeholder="#여기에 제목 들어감" id="example-text-input" name="title" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-4 col-form-label">Category</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" placeholder="#여기에 카테고리 들어감" id="example-text-input" name="category" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-4 col-form-label">Number of Person(Limit)</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" placeholder="#여기에 모집인원 들어감" id="example-text-input" name="num_person" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-4 col-form-label">Due Date</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" placeholder="#여기에 closing_date 들어감" id="example-text-input" name="closing_date" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group row">
+                        <h4 class="col-12 text-danger">Delete your Applying(Please decide carefully)</h4>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4 offset-8">
+                            <button type="submit" class="btn btn-warning">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

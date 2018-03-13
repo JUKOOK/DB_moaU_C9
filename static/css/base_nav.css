@@ -1,0 +1,46 @@
+.nav-item > a {
+  color:#fff !important;
+  padding: 1px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.active > a{
+  color:#EA53FF !important;
+  font-weight: bold;
+  border-bottom : 2px solid #EA53FF;
+  border-radius : 5px;
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .nav-item > a {
+     font-size: 1rem;
+  }
+}
+
+.navbar {
+  height : 10vh !important;
+}
+
+@media (max-width: 992px) {
+  li.nav-item {
+    width: 120px;
+  }
+  .nav-item > a {
+     font-size: 1rem;
+  }
+  .nav-link {
+    display: inline-block;
+  }
+}
+
+.nav-color {
+  background-color: rgba(59, 58, 54, 0.8) !important;
+  /*  #3b3a36  */
+}
+
+h2.navbar-brand {
+  border-top : 2px solid #FF384E;
+  border-bottom : 2px solid #FF384E;
+  border-radius : 5px;
+  color : #FF384E !important;
+  font-weight : bold;
+}
