@@ -1,0 +1,142 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title> moaU </title>
+
+  <!-- bootstrap cdn -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <!-- fontawesome cdn -->
+	<script src="https://use.fontawesome.com/c54db0b87f.js"></script>
+  <!-- static JS -->
+	<script src="{% static 'js/base.js' %}"></script>
+  <!-- static css of base nav -->
+	<link rel="stylesheet" href="{% static '../static/css/base_nav.css' %}">
+  <!-- static css of home -->
+	<link rel="stylesheet" href="{% static 'home/css/carousel.css' %}">
+	<!-- static css of mypage -->
+	<link rel="stylesheet" href="{% static 'mypage/css/sidebar.css' %}">
+	<!-- static css of bookmarket -->
+	<link rel="stylesheet" href="{% static 'bookmarket/css/jumbo_book.css' %}">
+	<!-- static css of groupbuying -->
+	<link rel="stylesheet" href="{% static 'groupbuying/css/jumbo_group.css' %}">	
+	<!-- static css of taxipool -->	
+	<link rel="stylesheet" href="{% static 'taxipool/css/jumbo_taxi.css' %}">	
+
+</head>
+
+<body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top nav-color" style="background-color: #e3f2fd;">
+      <div class="container">
+        <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+        </button>
+        <h2 class="navbar-brand">moaU</h2>
+  
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            {% if request.get_full_path != "/bookmarket/" and request.get_full_path != "/groupbuying/" and request.get_full_path != "/taxipool/" and request.path|slice:":7" != '/mypage'%}
+            <li class="nav-item active">
+            	<a class="nav-link" href="{% url 'home:index' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+            	<a class="nav-link" href="{% url 'home:index' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% endif %}
+            {% if request.get_full_path == "/bookmarket/" %}
+            <li class="nav-item active">
+            	<a class="nav-link" href="{% url 'bookmarket:index' %}">Book Market</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+            	<a class="nav-link" href="{% url 'bookmarket:index' %}">Book Market</a>
+            </li>
+            {% endif %}
+            {% if request.get_full_path == "/groupbuying/" %}
+            <li class="nav-item active">
+            	<a class="nav-link" href="{% url 'groupbuying:index' %}">Group Buying</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+            	<a class="nav-link" href="{% url 'groupbuying:index' %}">Group Buying</a>
+            </li>
+            {% endif %}
+            {% if request.get_full_path == "/taxipool/" %}
+            <li class="nav-item active">
+            	<a class="nav-link" href="{% url 'taxipool:index' %}">Taxi pool</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+            	<a class="nav-link" href="{% url 'taxipool:index' %}">Taxi pool</a>
+            </li>
+            {% endif %}
+          </ul>          
+  
+          <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+            <li>
+              <p class="navbar-text" style="color:#fff;"><strong>Welcome!&nbsp; </strong> {{ user.email }}</p>
+              &nbsp;&nbsp;
+            </li>
+            <li>
+              <a href="{% url 'mypage:changeinfo' %}"><button class="btn btn-primary">Mypage</button></a>
+              &nbsp;&nbsp;
+            </li>
+            <li style="color: rgba(0, 0, 0, 0);">o</li>
+            <li>
+              <a href="{% url 'accounts:logout' %}?next={{request.path}}"><button class="btn btn-primary">Logout</button></a>
+            </li>
+          </ul>
+          {% else %}
+            <li>
+              <a href="{% url 'social:begin' 'facebook' %}?next={{request.path}}"><button class="btn btn-primary">Login</button></a>
+            </li>
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+    	{% block content %}
+    	{% endblock content %}
+
+    {% if request.path|slice:":7" == '/mypage' %} 
+      <!-- FOOTER : Mypage -->
+      <div class="container_mp">
+        <div class="page-wrapper">
+          <footer class="page-content-wrapper">
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>&copy; Copyright @ moaU DB Team, 2017. &nbsp;&middot; <a href="#">Privacy</a> &nbsp;&middot; <a href="#">Terms</a></p>
+          </footer>
+        </div>
+      </div>
+      
+
+    {% else %}
+
+      {% block footer %}
+       <!--FOOTER -->
+      <footer>
+        <p></p>
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; Copyright @ moaU DB Team, 2017.  &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+      {% endblock %}
+    {% endif %}
+    </div><!-- /.container -->
+    
+
+    <!-- jquery and bootstrap cdn -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>

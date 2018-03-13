@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+</div>
+<div class="jumbotron jumbo_taxi">
+    <div class="container">
+        <form method="POST" action="{% url 'taxipool:Searching' %}">
+            <div class="row justify-content-md-center"> <!-- for search box -->
+            {% csrf_token %}
+                <div class="col-md-2">
+                    <select class="form-control input-lg mb-2 mr-sm-2 mb-sm-0" name="selected_category" style="height: 100%;">
+                        <option selected value="departure">Departure</option>
+                        <option value="Destination">Destination</option>
+                    </select>
+                </div>
+                <div class="col-md-7">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" placeholder="EX) UNIST / Ulsan station ..." name="selected_title" />
+                        <div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                <button type="submmit" class="btn btn-primary btn-lg"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row justify-content-md-center"> 
+            <div class="col-md-12 next_search">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label><h2 class="text-uppercase" style="color:#fff"> <strong>Seek your members</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2></label>
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="{% if user.is_authenticated %}#seek{% else %}#alarm_login{% endif %}">Seek</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+        {% include 'taxipool/modals/seek.html' %}
+        {% include 'modals/alarm_login.html' %}
+
+<div class="container">
+    {% include 'taxipool/partials/image_card.html' %}
+</div>
+{% endblock content %}
