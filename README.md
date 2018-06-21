@@ -1,3 +1,10 @@
+DB_Project-moaU
+DataBase Final Project : Web App 'moaU'
+
+DB : SQLite + django(raw SQL) / HTML, CSS, JS
+
+April ~ June, 2017
+
 
      ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
     '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
